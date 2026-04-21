@@ -1,0 +1,43 @@
+# Airflow Orchestration Project Tree
+
+```
+03-data-orchestration/
+├── dags/                        # Airflow DAGs
+│   └── daily_data_pipeline.py   # Example ETL pipeline
+├── plugins/                     # Custom operators/hooks
+├── config/
+│   ├── settings.py              # Configuration settings
+│   └── .env.example             # Environment variables template
+├── scripts/
+│   └── init_airflow.sh          # Airflow initialization
+├── tests/
+│   └── test_dags.py             # DAG tests
+├── logs/                        # Airflow logs (generated)
+├── requirements.txt             # Python dependencies
+├── docker-compose.yml           # Docker Compose setup
+├── Dockerfile                   # Container image definition
+├── .gitignore
+└── README.md
+```
+
+## Quick Start
+
+1. **Copy environment file**: `cp config/.env.example config/.env`
+2. **Update credentials** in `config/.env`
+3. **Start services**: `docker-compose up`
+4. **Access UI**: http://localhost:8080
+5. **Login**: admin/admin
+
+## Key Services
+
+- **Webserver**: UI at port 8080
+- **Scheduler**: Manages DAG scheduling
+- **Worker**: Executes tasks (Celery)
+- **Postgres**: Metadata database
+- **Redis**: Message broker
+
+## DAG Development
+
+- Add new DAGs in `dags/` directory
+- Auto-loaded by Airflow scheduler
+- Reference example in `daily_data_pipeline.py`

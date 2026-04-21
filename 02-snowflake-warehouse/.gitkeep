@@ -1,0 +1,37 @@
+# Snowflake Project Tree
+
+```
+02-snowflake-warehouse/
+├── sql/
+│   ├── setup/
+│   │   ├── 01_create_warehouses.sql
+│   │   ├── 02_create_databases.sql
+│   │   └── 03_create_schemas.sql
+│   ├── procedures/              # Stored procedures/functions
+│   ├── views/                   # SQL views
+│   └── tasks/                   # Scheduled Snowflake tasks
+├── roles_and_permissions/
+│   ├── roles.sql                # Role and permission configurations
+│   └── user_setup.sql
+├── documentation/
+│   ├── data_dictionary.md       # Data catalog
+│   └── maintenance_guide.md
+├── monitoring/
+│   ├── query_performance.sql    # Performance monitoring
+│   └── cost_tracking.sql
+├── .sqlfluff                    # SQL linting rules
+└── README.md
+```
+
+## Setup Instructions
+
+1. Update Snowflake credentials
+2. Execute setup scripts: `01_create_warehouses.sql` → `02_create_databases.sql` → `03_create_schemas.sql`
+3. Set up roles and permissions: `roles_and_permissions/roles.sql`
+4. Monitor with queries in `monitoring/query_performance.sql`
+
+## Key Components
+
+- **Warehouses**: analytics_wh, etl_wh, reporting_wh
+- **Layers**: Bronze (raw), Silver (cleaned), Gold (business-ready)
+- **Security**: Role-based access control (RBAC)

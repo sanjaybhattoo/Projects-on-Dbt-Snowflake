@@ -1,0 +1,53 @@
+
+# Name your project! Project names should be lowercase and use underscores as spaces.
+name: 'analytics_project'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'analytics_project'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+target-path: "target"                # directory which will store compiled SQL files
+clean-targets:                        # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  analytics_project:
+    # Model materialization settings
+    materialized: view
+    
+    staging:
+      +materialized: table
+      +schema: staging
+      tags: ["staging"]
+      
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+      tags: ["intermediate"]
+      
+    marts:
+      +materialized: table
+      +schema: marts
+      tags: ["marts"]
+
+# Seed configuration
+seeds:
+  analytics_project:
+    +quote_columns: false
+
+# Source freshness check
+sources:
+  default:
+    freshness:
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
