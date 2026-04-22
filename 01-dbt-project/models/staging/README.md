@@ -1,6 +1,6 @@
 # Staging Models
 
-Staging models clean and standardize raw source data. They:
+Staging models clean and standardize raw source data.
 
 - Remove duplicates
 - Handle null values
@@ -8,8 +8,7 @@ Staging models clean and standardize raw source data. They:
 - Cast data types
 - Validate data quality
 
-## Example
-```sql
+## query example
 -- stg_customers.sql
 {{ config(materialized='table') }}
 
@@ -21,4 +20,3 @@ SELECT
     updated_at
 FROM {{ source('raw', 'customers') }}
 WHERE deleted_at IS NULL
-```
