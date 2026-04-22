@@ -1,14 +1,13 @@
 # Intermediate Models
 
-Intermediate models contain complex business logic and transformations. They:
+Intermediate models with complex business logic and transformations.
 
 - Combine data from multiple sources
 - Implement complex business rules
 - Create calculated fields
 - Apply aggregations
 
-## Example
-```sql
+## query example
 -- int_customer_orders.sql
 {{ config(materialized='view') }}
 
@@ -21,4 +20,4 @@ SELECT
 FROM {{ ref('stg_customers') }} c
 LEFT JOIN {{ ref('stg_orders') }} o ON c.customer_id = o.customer_id
 GROUP BY c.customer_id, c.customer_name
-```
+
