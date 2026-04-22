@@ -1,14 +1,13 @@
 # Mart Models
 
-Mart models are final business-ready tables for analytics and reporting. They:
+Mart models with final business-ready tables for analytics and reporting.
 
-- Are optimized for query performance
+-  optimized for query performance
 - Serve specific analytical needs
 - Materialize as tables for speed
 - Include denormalized data for convenience
 
-## Example
-```sql
+## query example
 -- fct_customer_lifetime_value.sql
 {{ config(materialized='table') }}
 
@@ -22,4 +21,3 @@ SELECT
     last_order_date,
     days_since_last_order
 FROM {{ ref('int_customer_orders') }}
-```
